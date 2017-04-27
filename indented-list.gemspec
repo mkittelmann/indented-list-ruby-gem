@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.name        = 'indented-list'
-  s.version     = '0.0.1'
-  s.date        = '2017-04-22'
+  s.version     = '0.0.2'
+  s.date        = '2017-04-27'
   s.summary     = "Parses whitespace indented nested lists into a Ruby object"
   s.description = "Parses whitespace indented nested lists into a Ruby object of nested Hashes and Arrays."
   s.authors     = ["Maike Kittelmann"]

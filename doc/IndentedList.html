@@ -91,6 +91,10 @@
     
     <li class="calls-super" ><a href="#method-i-method_missing">#method_missing</a>
     
+    <li ><a href="#method-i-original_respond_to-3F">#original_respond_to?</a>
+    
+    <li ><a href="#method-i-respond_to-3F">#respond_to?</a>
+    
   </ul>
 </div>
 
@@ -297,7 +301,7 @@ branch of the root Hash in which match has occured.</p>
 
           
           <div class="method-source-code" id="find-source">
-            <pre><span class="ruby-comment"># File lib/indented-list.rb, line 77</span>
+            <pre><span class="ruby-comment"># File lib/indented-list.rb, line 82</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">find</span>( <span class="ruby-identifier">regex</span> )
   <span class="ruby-identifier">list</span>.<span class="ruby-identifier">select</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">k</span>,<span class="ruby-identifier">v</span><span class="ruby-operator">|</span> { <span class="ruby-identifier">k</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">v</span> } <span class="ruby-keyword">if</span> ( <span class="ruby-identifier">k</span>.<span class="ruby-identifier">match</span>( <span class="ruby-identifier">regex</span> ) <span class="ruby-operator">||</span> <span class="ruby-identifier">v</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">match</span>( <span class="ruby-identifier">regex</span> ) ) } 
 <span class="ruby-keyword">end</span></pre>
@@ -330,7 +334,7 @@ branch of the root Hash in which match has occured.</p>
 
           
           <div class="method-source-code" id="get-source">
-            <pre><span class="ruby-comment"># File lib/indented-list.rb, line 84</span>
+            <pre><span class="ruby-comment"># File lib/indented-list.rb, line 89</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">get</span>( <span class="ruby-operator">*</span><span class="ruby-identifier">params</span> )
   <span class="ruby-identifier">puts</span> <span class="ruby-string">&#39;Implement specific searches for your list. See documentation for how to do this.&#39;</span>
 <span class="ruby-keyword">end</span></pre>
@@ -376,6 +380,71 @@ branch of the root Hash in which match has occured.</p>
           
         </div>
 
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-original_respond_to-3F" class="method-detail method-alias">
+        
+        <div class="method-heading">
+          <span class="method-name">original_respond_to?</span><span
+            class="method-args">( method )</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+        </div>
+
+        
+
+        
+        <div class="aliases">
+          Alias for: <a href="IndentedList.html#method-i-respond_to-3F">respond_to?</a>
+        </div>
+        
+      </div>
+
+    
+      <div id="method-i-respond_to-3F" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">respond_to?</span><span
+            class="method-args">( method )</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="respond_to-3F-source">
+            <pre><span class="ruby-comment"># File lib/indented-list.rb, line 74</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">respond_to?</span>( <span class="ruby-identifier">method</span> )
+  <span class="ruby-identifier">original_respond_to?</span>( <span class="ruby-identifier">method</span> ) <span class="ruby-operator">||</span> <span class="ruby-identifier">list</span>.<span class="ruby-identifier">respond_to?</span>( <span class="ruby-identifier">method</span> )
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+        <div class="aliases">
+          Also aliased as: <a href="IndentedList.html#method-i-original_respond_to-3F">original_respond_to?</a>
+        </div>
         
 
         

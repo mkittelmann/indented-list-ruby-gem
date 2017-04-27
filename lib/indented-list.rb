@@ -70,6 +70,11 @@ class IndentedList
     list.respond_to?( method, *args, &block ) ? list.send( method, *args, &block ) : super
   end  
   
+  alias_method :original_respond_to? , :respond_to?
+  def respond_to?( method )
+    original_respond_to?( method ) || list.respond_to?( method )
+  end
+  
   #
   # Full text search. Takes a regular expression as an argument. 
   # Returns full branch of the root Hash in which match has occured.

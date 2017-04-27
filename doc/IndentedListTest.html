@@ -137,7 +137,7 @@
           <div class="method-source-code" id="setup-source">
             <pre><span class="ruby-comment"># File test/indented_list_test.rb, line 6</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">setup</span>
-  <span class="ruby-ivar">@list</span> = <span class="ruby-constant">IndentedList</span>.<span class="ruby-identifier">new</span>( <span class="ruby-string">&#39;test/examples/list.txt&#39;</span> )
+  <span class="ruby-ivar">@list</span> = <span class="ruby-constant">IndentedList</span>.<span class="ruby-identifier">new</span>( <span class="ruby-string">&#39;./examples/list.txt&#39;</span> )
 <span class="ruby-keyword">end</span></pre>
           </div>
           
@@ -168,7 +168,7 @@
 
           
           <div class="method-source-code" id="test_access_list-source">
-            <pre><span class="ruby-comment"># File test/indented_list_test.rb, line 40</span>
+            <pre><span class="ruby-comment"># File test/indented_list_test.rb, line 64</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">test_access_list</span>
   <span class="ruby-identifier">expected</span> = {<span class="ruby-string">&quot;Indicators&quot;</span>=<span class="ruby-operator">&gt;</span>
               {<span class="ruby-string">&quot;First - Undefined&quot;</span>=<span class="ruby-operator">&gt;</span>[<span class="ruby-node">&quot;# - Undefined&quot;</span>],
@@ -215,7 +215,7 @@
 
           
           <div class="method-source-code" id="test_iterate_list-source">
-            <pre><span class="ruby-comment"># File test/indented_list_test.rb, line 26</span>
+            <pre><span class="ruby-comment"># File test/indented_list_test.rb, line 50</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">test_iterate_list</span>
   <span class="ruby-identifier">expected</span> = [<span class="ruby-string">&quot;887 - NON-MARC INFORMATION FIELD (R)&quot;</span>,
                {<span class="ruby-string">&quot;Indicators&quot;</span>=<span class="ruby-operator">&gt;</span>
@@ -260,7 +260,7 @@
           <div class="method-source-code" id="test_load_list_from_file-source">
             <pre><span class="ruby-comment"># File test/indented_list_test.rb, line 10</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">test_load_list_from_file</span>
-  <span class="ruby-identifier">assert</span> <span class="ruby-identifier">list</span> = <span class="ruby-constant">IndentedList</span>.<span class="ruby-identifier">new</span>( <span class="ruby-string">&#39;test/examples/list.txt&#39;</span> )
+  <span class="ruby-identifier">assert</span> <span class="ruby-identifier">list</span> = <span class="ruby-constant">IndentedList</span>.<span class="ruby-identifier">new</span>( <span class="ruby-string">&#39;./examples/list.txt&#39;</span> )
   <span class="ruby-identifier">assert</span> <span class="ruby-identifier">list</span>.<span class="ruby-identifier">respond_to?</span>( <span class="ruby-value">:list</span> )
   <span class="ruby-identifier">assert_equal</span> <span class="ruby-value">298</span>, <span class="ruby-identifier">list</span>.<span class="ruby-identifier">list</span>.<span class="ruby-identifier">count</span>
 <span class="ruby-keyword">end</span></pre>
@@ -294,11 +294,35 @@
           
           <div class="method-source-code" id="test_load_list_from_string-source">
             <pre><span class="ruby-comment"># File test/indented_list_test.rb, line 16</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">test_load_list_from_string</span>
-  <span class="ruby-identifier">assert</span> <span class="ruby-identifier">list</span> = <span class="ruby-constant">IndentedList</span>.<span class="ruby-identifier">new</span>( <span class="ruby-constant">DATA</span>.<span class="ruby-identifier">read</span> )
-  <span class="ruby-identifier">assert</span> <span class="ruby-identifier">list</span>.<span class="ruby-identifier">respond_to?</span>( <span class="ruby-value">:list</span> )
-  <span class="ruby-identifier">assert_equal</span> <span class="ruby-value">298</span>, <span class="ruby-identifier">list</span>.<span class="ruby-identifier">list</span>.<span class="ruby-identifier">count</span>
-<span class="ruby-keyword">end</span></pre>
+  <span class="ruby-keyword">def</span> <span class="ruby-identifier">test_load_list_from_string</span>
+    <span class="ruby-identifier">str</span> =  <span class="ruby-string">&quot;  
+245 - TITLE STATEMENT (NR)
+   Indicators
+      First - Title added entry
+         0 - No added entry
+         1 - Added entry
+      Second - Nonfiling characters
+         0-9 - Number of nonfiling characters
+   Subfield Codes
+      $a - Title (NR)
+      $b - Remainder of title (NR)
+      $c - Statement of responsibility, etc. (NR)
+      $d - Designation of section (SE) [OBSOLETE]
+      $e - Name of part/section (SE) [OBSOLETE]
+      $f - Inclusive dates (NR)
+      $g - Bulk dates (NR)
+      $h - Medium (NR)
+      $k - Form (R)
+      $n - Number of part/section of a work (R)
+      $p - Name of part/section of a work (R)
+      $s - Version (NR)
+      $6 - Linkage (NR)
+      $8 - Field link and sequence number (R)&quot;</span>
+
+    <span class="ruby-identifier">assert</span> <span class="ruby-identifier">list</span> = <span class="ruby-constant">IndentedList</span>.<span class="ruby-identifier">new</span>( <span class="ruby-identifier">str</span> )
+    <span class="ruby-identifier">assert</span> <span class="ruby-identifier">list</span>.<span class="ruby-identifier">respond_to?</span>( <span class="ruby-value">:list</span> )
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-value">1</span>, <span class="ruby-identifier">list</span>.<span class="ruby-identifier">list</span>.<span class="ruby-identifier">count</span>
+  <span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>
@@ -328,7 +352,7 @@
 
           
           <div class="method-source-code" id="test_method_missing-source">
-            <pre><span class="ruby-comment"># File test/indented_list_test.rb, line 22</span>
+            <pre><span class="ruby-comment"># File test/indented_list_test.rb, line 46</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">test_method_missing</span>
   <span class="ruby-identifier">assert_equal</span> <span class="ruby-ivar">@list</span>.<span class="ruby-identifier">count</span>, <span class="ruby-ivar">@list</span>.<span class="ruby-identifier">list</span>.<span class="ruby-identifier">count</span>
 <span class="ruby-keyword">end</span></pre>

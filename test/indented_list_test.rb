@@ -4,19 +4,43 @@ require 'indented-list'
 class IndentedListTest < Minitest::Test
   
   def setup
-    @list = IndentedList.new( 'test/examples/list.txt' )
+    @list = IndentedList.new( './examples/list.txt' )
   end
 
   def test_load_list_from_file
-    assert list = IndentedList.new( 'test/examples/list.txt' )
+    assert list = IndentedList.new( './examples/list.txt' )
     assert list.respond_to?( :list )
     assert_equal 298, list.list.count
   end
   
   def test_load_list_from_string
-    assert list = IndentedList.new( DATA.read )
+    str =  "  
+245 - TITLE STATEMENT (NR)
+   Indicators
+      First - Title added entry
+         0 - No added entry
+         1 - Added entry
+      Second - Nonfiling characters
+         0-9 - Number of nonfiling characters
+   Subfield Codes
+      $a - Title (NR)
+      $b - Remainder of title (NR)
+      $c - Statement of responsibility, etc. (NR)
+      $d - Designation of section (SE) [OBSOLETE]
+      $e - Name of part/section (SE) [OBSOLETE]
+      $f - Inclusive dates (NR)
+      $g - Bulk dates (NR)
+      $h - Medium (NR)
+      $k - Form (R)
+      $n - Number of part/section of a work (R)
+      $p - Name of part/section of a work (R)
+      $s - Version (NR)
+      $6 - Linkage (NR)
+      $8 - Field link and sequence number (R)"
+
+    assert list = IndentedList.new( str )
     assert list.respond_to?( :list )
-    assert_equal 298, list.list.count
+    assert_equal 1, list.list.count
   end
   
   def test_method_missing
